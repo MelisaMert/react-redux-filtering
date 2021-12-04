@@ -44,6 +44,8 @@ export const PostReducers = (state = initialState, action) => {
                     post.title.toLowerCase().includes(action.payload.toLowerCase());
                 })
             }
+        default: 
+          return state;
     }
 }
 
