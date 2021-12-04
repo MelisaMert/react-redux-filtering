@@ -26,13 +26,13 @@ export const PostReducers = (state = initialState, action) => {
                 error: action.payload
             }
         case actions.SORT_POSTS_ASC:
-            const sortAsc = action.payload.sort((a, b) => (a.title < b.title ? 1 : a.title > b.title ? -1 : 0));
+            const sortAsc = state.posts.sort((a, b) => (a.title < b.title ? 1 : a.title > b.title ? -1 : 0));
             return {
                 ...state,
                 posts: sortAsc
             }
         case actions.SORT_POSTS_DESC:
-            const sortDesc = action.payload.sort((a, b) => (a.title < b.title ? -1 : a.title > b.title ? 1 : 0));
+            const sortDesc = state.posts.sort((a, b) => (a.title < b.title ? -1 : a.title > b.title ? 1 : 0));
             return {
                 ...state,
                 posts: sortDesc
@@ -40,9 +40,8 @@ export const PostReducers = (state = initialState, action) => {
         case actions.SEARCH_POSTS:
             return {
                 ...state,
-                posts: state.searchResults.filter((post) => {
-                    post.title.toLowerCase().includes(action.payload.toLowerCase());
-                })
+                posts: state.searchResults.filter((post) => post.title.toLowerCase().includes(action.payload.toLowerCase()))
+            
             }
         default: 
           return state;

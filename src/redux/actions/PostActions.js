@@ -12,16 +12,30 @@ export const fetchPosts = () => async(dispatch) => {
     }
 };
 
-export const sortPostsAsc = (dispatch, getState) => {
-    const {PostReducers} = getState();
-    dispatch({type: actions.SORT_POSTS_ASC, payload: PostReducers.posts });
+export const sortPostsAsc = () => async (dispatch) => {
+    // const {PostReducers} = getState();
+    // dispatch({type: actions.SORT_POSTS_ASC, payload: PostReducers.posts });
+
+    try {
+        dispatch({type: actions.SORT_POSTS_ASC});
+    } catch(error) {
+        console.log(error);
+    }
 }
 
-export const sortPostsDesc = (dispatch, getState) => {
-    const {PostReducers} = getState();
-    dispatch({ type: actions.SORT_POSTS_ASC, payload: PostReducers.posts});
+export const sortPostsDesc = () => async (dispatch) => {
+    try {
+        dispatch({ type: actions.SORT_POSTS_DESC});
+    } catch(error) {
+        console.log(error);
+    }
+   
 }
 
 export const searchPosts = (query) => (dispatch) => {
-    dispatch({type: actions.SEARCH_POSTS,  payload: query});
+    try {
+        dispatch({type: actions.SEARCH_POSTS,  payload: query});
+    } catch(error) {
+      console.log(error)
+    }
 }
